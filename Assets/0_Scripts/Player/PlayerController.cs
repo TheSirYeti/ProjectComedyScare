@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
         {
             playerModel = model;
         }
+        else
+        {
+            Debug.LogError("No PlayerModel Component Found - PlayerController");
+        }
     }
 
     private void Update()
