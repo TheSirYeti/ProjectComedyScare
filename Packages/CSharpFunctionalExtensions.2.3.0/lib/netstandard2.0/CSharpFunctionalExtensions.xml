@@ -1,0 +1,828 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CSharpFunctionalExtensions</name>
+    </assembly>
+    <members>
+        <member name="M:CSharpFunctionalExtensions.Result.Combine(CSharpFunctionalExtensions.Result[])">
+            <summary>
+            Combines several results (and any error messages) into a single result.
+            The returned result will be a failure if any of the input <paramref name="results"/> are failures.
+            Error messages are concatenated with the default <see cref="F:CSharpFunctionalExtensions.Result.ErrorMessagesSeparator" /> between each message.
+            </summary>
+            <param name="results">The Results to be combined.</param>
+            <returns>A Result that is a success when all the input <paramref name="results"/> are also successes.</returns>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.Result.Combine(System.String,CSharpFunctionalExtensions.Result[])">
+            <summary>
+            Combines several results (and any error messages) into a single result.
+            The returned result will be a failure if any of the input <paramref name="results"/> are failures.
+            Error messages are concatenated with the specified <paramref name="errorMessagesSeparator"/> between each message.
+            </summary>
+            <param name="errorMessagesSeparator">The string to use as a separator. If omitted, the default <see cref="F:CSharpFunctionalExtensions.Result.ErrorMessagesSeparator" /> is used instead.</param>
+            <param name="results">The Results to be combined.</param>
+            <returns>A Result that is a success when all the input <paramref name="results"/> are also successes.</returns>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.Result.FirstFailureOrSuccess(CSharpFunctionalExtensions.Result[])">
+            <summary>
+            Returns first failure in the list of <paramref name="results"/>. If there is no failure returns success.
+            </summary>
+            <param name="results">List of results.</param>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.Result.Ok">
+            <summary>
+            Deprecated. Use Success() instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.Result.Ok``1(``0)">
+            <summary>
+            Deprecated. Use Success() instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.Result.Ok``2(``0)">
+            <summary>
+            Deprecated. Use Success() instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Bind``3(CSharpFunctionalExtensions.Result{``0,``2},System.Func{``0,CSharpFunctionalExtensions.Result{``1,``2}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Bind``2(CSharpFunctionalExtensions.Result{``0},System.Func{``0,CSharpFunctionalExtensions.Result{``1}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Bind``1(CSharpFunctionalExtensions.Result,System.Func{CSharpFunctionalExtensions.Result{``0}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Bind``1(CSharpFunctionalExtensions.Result{``0},System.Func{``0,CSharpFunctionalExtensions.Result})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Bind(CSharpFunctionalExtensions.Result,System.Func{CSharpFunctionalExtensions.Result})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Ensure``2(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``0,System.Boolean},``1)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Ensure``1(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Ensure(CSharpFunctionalExtensions.Result,System.Func{System.Boolean},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Finally``1(CSharpFunctionalExtensions.Result,System.Func{CSharpFunctionalExtensions.Result,``0})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Finally``2(CSharpFunctionalExtensions.Result{``0},System.Func{CSharpFunctionalExtensions.Result{``0},``1})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Finally``3(CSharpFunctionalExtensions.Result{``0,``2},System.Func{CSharpFunctionalExtensions.Result{``0,``2},``1})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Map``3(CSharpFunctionalExtensions.Result{``0,``2},System.Func{``0,``1})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Map``2(CSharpFunctionalExtensions.Result{``0},System.Func{``0,``1})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Map``1(CSharpFunctionalExtensions.Result,System.Func{``0})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.OnFailure``2(CSharpFunctionalExtensions.Result{``0,``1},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.OnFailure``1(CSharpFunctionalExtensions.Result{``0},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.OnFailure(CSharpFunctionalExtensions.Result,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.OnFailure``2(CSharpFunctionalExtensions.Result{``0,``1},System.Action{``1})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.OnFailure``1(CSharpFunctionalExtensions.Result{``0},System.Action{System.String})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.OnFailure(CSharpFunctionalExtensions.Result,System.Action{System.String})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``3(CSharpFunctionalExtensions.Result{``0},System.Func{``0,CSharpFunctionalExtensions.Result{``1}},System.Func{``0,``1,``2})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``4(CSharpFunctionalExtensions.Result{``0,``2},System.Func{``0,CSharpFunctionalExtensions.Result{``1,``2}},System.Func{``0,``1,``3})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1}}},System.Func{``0,``1,``2})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``4(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1,``2}}},System.Func{``0,``1,``3})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,CSharpFunctionalExtensions.Result{``1}},System.Func{``0,``1,``2})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``4(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{``0,CSharpFunctionalExtensions.Result{``1,``2}},System.Func{``0,``1,``3})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``3(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1}}},System.Func{``0,``1,``2})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.SelectMany``4(CSharpFunctionalExtensions.Result{``0,``2},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1,``2}}},System.Func{``0,``1,``3})">
+            <summary>
+                This method should be used in linq queries. We recommend using Bind method.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap(CSharpFunctionalExtensions.Result,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``1(CSharpFunctionalExtensions.Result{``0},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``1(CSharpFunctionalExtensions.Result{``0},System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``2(CSharpFunctionalExtensions.Result{``0,``1},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``2(CSharpFunctionalExtensions.Result{``0,``1},System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``1(CSharpFunctionalExtensions.Result,System.Func{``0})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``2(CSharpFunctionalExtensions.Result{``0},System.Func{``1})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``2(CSharpFunctionalExtensions.Result{``0},System.Func{``0,``1})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``3(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``2})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.Tap``3(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``0,``2})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf(CSharpFunctionalExtensions.Result,System.Boolean,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``1(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``1(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``2(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``2(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``1(CSharpFunctionalExtensions.Result,System.Boolean,System.Func{``0})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``2(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Func{``1})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``2(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Func{``0,``1})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``3(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Func{``2})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.ResultExtensions.TapIf``3(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Func{``0,``2})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Bind``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1,``2}}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Bind``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1}}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Bind``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Bind``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Bind(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Ensure``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Ensure``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},``1)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Ensure(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Threading.Tasks.Task{System.Boolean}},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Finally``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{CSharpFunctionalExtensions.Result,System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Finally``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{CSharpFunctionalExtensions.Result{``0},System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Finally``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{CSharpFunctionalExtensions.Result{``0,``2},System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Map``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Map``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Map``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.OnFailure``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.OnFailure``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.OnFailure(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.OnFailure``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{System.String,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.OnFailure``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{``1,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Tap(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Tap``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Tap``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Tap``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.Tap``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.TapIf(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Boolean,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.TapIf``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Boolean,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.TapIf``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Boolean,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.TapIf``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Boolean,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsBothOperands.TapIf``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Boolean,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Bind``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{``0,CSharpFunctionalExtensions.Result{``1,``2}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Bind``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,CSharpFunctionalExtensions.Result{``1}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Bind``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{CSharpFunctionalExtensions.Result{``0}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Bind``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,CSharpFunctionalExtensions.Result})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Bind(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{CSharpFunctionalExtensions.Result})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Ensure``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Ensure``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{``0,System.Boolean},``1)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Ensure(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{System.Boolean},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Finally``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{CSharpFunctionalExtensions.Result,``0})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Finally``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{CSharpFunctionalExtensions.Result{``0},``1})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Finally``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{CSharpFunctionalExtensions.Result{``0,``2},``1})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Map``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``2}},System.Func{``0,``1})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Map``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,``1})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Map``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{``0})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.OnFailure``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.OnFailure(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.OnFailure``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Action{System.String})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.OnFailure``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Action{``1})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.OnFailure(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Action{System.String})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Func{``0})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``1})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Func{``0,``1})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{``2})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.Tap``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Func{``0,``2})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Boolean,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Boolean,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Boolean,System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Boolean,System.Action)">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Boolean,System.Action{``0})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``1(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result},System.Boolean,System.Func{``0})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Boolean,System.Func{``1})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``2(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}},System.Boolean,System.Func{``0,``1})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Boolean,System.Func{``2})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsLeftOperand.TapIf``3(System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0,``1}},System.Boolean,System.Func{``0,``2})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Bind``3(CSharpFunctionalExtensions.Result{``0,``2},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1,``2}}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Bind``2(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``1}}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Bind``1(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result{``0}}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Bind``1(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Bind(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task{CSharpFunctionalExtensions.Result}})">
+            <summary>
+                Selects result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Ensure``1(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Ensure``2(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},``1)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Ensure(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task{System.Boolean}},System.String)">
+            <summary>
+                Returns a new failure result if the predicate is false. Otherwise returns the starting result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Finally``1(CSharpFunctionalExtensions.Result,System.Func{CSharpFunctionalExtensions.Result,System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Finally``2(CSharpFunctionalExtensions.Result{``0},System.Func{CSharpFunctionalExtensions.Result{``0},System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Finally``3(CSharpFunctionalExtensions.Result{``0,``2},System.Func{CSharpFunctionalExtensions.Result{``0},System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Passes the result to the given function (regardless of success/failure state) to yield a final output value.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Map``3(CSharpFunctionalExtensions.Result{``0,``2},System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Map``2(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Map``1(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Creates a new result from the return value of a given function. If the calling Result is a failure, a new failure result is returned instead.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.OnFailure``1(CSharpFunctionalExtensions.Result{``0},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.OnFailure``2(CSharpFunctionalExtensions.Result{``0,``1},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.OnFailure(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.OnFailure``1(CSharpFunctionalExtensions.Result{``0},System.Func{System.String,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.OnFailure``2(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``1,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a failure. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``1(CSharpFunctionalExtensions.Result,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``1(CSharpFunctionalExtensions.Result{``0},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``2(CSharpFunctionalExtensions.Result{``0},System.Func{System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``2(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``2(CSharpFunctionalExtensions.Result{``0,``1},System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``3(CSharpFunctionalExtensions.Result{``0,``1},System.Func{System.Threading.Tasks.Task{``2}})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``1(CSharpFunctionalExtensions.Result{``0},System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``2(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.Tap``3(CSharpFunctionalExtensions.Result{``0,``1},System.Func{``0,System.Threading.Tasks.Task{``2}})">
+            <summary>
+                Executes the given action if the calling result is a success. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf(CSharpFunctionalExtensions.Result,System.Boolean,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``1(CSharpFunctionalExtensions.Result,System.Boolean,System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``1(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``2(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Func{System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``2(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Func{``0,System.Threading.Tasks.Task{``1}})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``2(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``3(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Func{System.Threading.Tasks.Task{``2}})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``1(CSharpFunctionalExtensions.Result{``0},System.Boolean,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``2(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="M:CSharpFunctionalExtensions.AsyncResultExtensionsRightOperand.TapIf``3(CSharpFunctionalExtensions.Result{``0,``1},System.Boolean,System.Func{``0,System.Threading.Tasks.Task{``2}})">
+            <summary>
+                Executes the given action if the calling result is a success and condition is true. Returns the calling result.
+            </summary>
+        </member>
+        <member name="T:CSharpFunctionalExtensions.ValueObject`1">
+            <summary>
+            Use non-generic ValueObject whenever possible: http://bit.ly/vo-new
+            </summary>
+        </member>
+    </members>
+</doc>
